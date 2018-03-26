@@ -138,7 +138,7 @@ def collect_dated_files(source_folder, min_age):
 
 
 def rotate_daily():
-    logger.info('Rotating daily files ...')
+    logger.info('* Rotating daily files ...')
     files = collect_dated_files(DAILY, 7)
     errors = 0
     for file_obj in files:
@@ -155,7 +155,7 @@ def rotate_daily():
 
 
 def rotate_weekly():
-    logger.info('Rotating weekly files ...')
+    logger.info('* Rotating weekly files ...')
     files = collect_dated_files(WEEKLY, 31)
     errors = 0
     for file_obj in files:
@@ -172,7 +172,7 @@ def rotate_weekly():
 
 
 def rotate_monthly():
-    logger.info('Rotating monthly files ...')
+    logger.info('* Rotating monthly files ...')
     files = collect_dated_files(MONTHLY, 365)
     errors = 0
     for file_obj in files:
@@ -189,6 +189,7 @@ def rotate_monthly():
 
 
 def cleanup_quarantine():
+    logger.info('* Cleanup quarantine ...')
     files = collect_dated_files(QUARANTINE, 31)
     for file in files:
         file.destroy(QUARANTINE)
